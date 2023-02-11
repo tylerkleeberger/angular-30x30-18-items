@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    List of Items
+  </mat-toolbar>
+  
+  <div class="container-component">
+    <div class="list">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Item Layout
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item
+              *ngFor="let item of items"
+              [routerLink]="['/main/items', item.id]">
+              <h3 matLine> {{ item.title | titlecase }} </h3>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="details">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Current Item </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list *ngIf="currentItem; else elseBlock">
+            <mat-list-item>
+              <h3 matLine> {{ currentItem.title | titlecase }} </h3>
+            </mat-list-item>
+          </mat-list>
+          <ng-template #elseBlock>Select an Item</ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
